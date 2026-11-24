@@ -729,3 +729,65 @@ button {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+
+/* Mobile layout refinement: keep settings controls in their own rows */
+@media (max-width: 640px) {
+  .bottom-section > .input-group {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      "ops digits-label"
+      "digits-input digits-input"
+      "numbers numbers";
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin: 0 0 16px;
+  }
+  .bottom-section > .input-group > .dropdown:first-child {
+    grid-area: ops;
+    justify-self: start;
+    position: relative;
+  }
+  #digitsLabel { grid-area: digits-label; justify-self: end; }
+  #digits { grid-area: digits-input; width: 100%; margin: 0; }
+  #dropdown-container { grid-area: numbers; justify-self: start; position: relative; }
+  .dropbtn, .dropdown-digit-button { margin: 0; }
+  .dropdown-content {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    left: auto;
+    z-index: 20;
+    min-width: 150px;
+  }
+  .bottom-section > div:has(> .input-group-input) { width: 100%; }
+  .bottom-section > div > .input-group-input {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+  }
+  #random { order: 2; min-width: 76px; margin: 0; }
+  #exercise { order: 1; flex: 1 1 auto; width: auto; min-width: 0; margin: 0; }
+  #resultInput {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "label label" "field check";
+    gap: 8px;
+  }
+  #resultLabel { grid-area: label; justify-self: start; }
+  #result { grid-area: field; width: 100%; min-width: 0; margin: 0; }
+  #check { grid-area: check; min-width: 76px; margin: 0; }
+  .test-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .test-controls > * { min-width: 0; }
+  #languageToggle { position: absolute; top: 10px; right: 10px; min-height: 36px; padding: 6px 10px; font-size: 14px; }
+  .banner h1 { padding: 0 78px; }
+}
+@media (max-width: 380px) {
+  #resultInput { grid-template-columns: minmax(0, 1fr); grid-template-areas: "label" "field" "check"; }
+  #check { width: 100%; }
+  .test-controls { grid-template-columns: minmax(0, 1fr); }
+}
