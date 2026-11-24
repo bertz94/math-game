@@ -18,7 +18,7 @@ function generateRandom() {
 
   // Return error if no operation selected
   if (!operation) {
-    alert('בחר פעולה');
+    alert(uiText('chooseOperation'));
     return;
   }
 
@@ -498,7 +498,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Load high score
   let highScore = parseInt(getCookie('highScore')) || 0;
-  document.getElementById('highScore').textContent = `שיא: ${highScore}`;
+  document.getElementById('highScore').textContent = uiText('highScore', highScore);
   setCookie('highScore', highScore, 365);
 });
 
@@ -615,8 +615,8 @@ function updateScore(correct) {
   }
 
   // Display the updated streak and high score
-  streakElement.textContent = `רצף נוכחי: ${streak}`;
-  highScoreElement.textContent = `שיא: ${highScore}`;
+  streakElement.textContent = uiText('streak', streak);
+  highScoreElement.textContent = uiText('highScore', highScore);
 }
 
 function toggleDropdownArithmeticDropdown() {
@@ -742,7 +742,7 @@ function handleTestAnswer(isCorrect, details) {
   const progressEl = document.getElementById('testProgress');
   const correctEl = document.getElementById('testCorrect');
   if (progressEl) progressEl.textContent = `${testAskedCount}/${testTargetQuestions}`;
-  if (correctEl) correctEl.textContent = `נכונות: ${testCorrectCount}`;
+  if (correctEl) correctEl.textContent = uiText('correctCount', testCorrectCount);
 
   // Check end condition
   if (testAskedCount >= testTargetQuestions) {
@@ -763,7 +763,7 @@ function appendTestSummary(n1, n2, opName, userAnswer, correctAnswer, isCorrect)
   const item = document.createElement('div');
   item.className = `test-item ${isCorrect ? 'correct' : 'wrong'}`;
   const op = convertToSymbol(opName);
-  item.textContent = `${n1} ${op} ${n2} = ${correctAnswer} | תשובתך: ${userAnswer}`;
+  item.textContent = uiText('answerSummary', `${n1} ${op} ${n2} = ${correctAnswer}`, userAnswer);
   summary.appendChild(item);
 
   // Save for download
@@ -796,7 +796,7 @@ function startTestMode() {
   if (downloadBtn) downloadBtn.classList.add('hidden');
   if (summary) { summary.classList.add('hidden'); summary.innerHTML = ''; }
   if (progressEl) progressEl.textContent = `0/${testTargetQuestions}`;
-  if (correctEl) correctEl.textContent = `נכונות: 0`;
+  if (correctEl) correctEl.textContent = uiText('correctCount', 0);
   if (timerEl) timerEl.textContent = `10:00`;
 
   // Start timer (10 minutes)
@@ -949,7 +949,7 @@ function generatePrintableTest() {
       <head>
         <meta charset="utf-8">
         ${style}
-        <title>מבחן חשבון (${questionsCount} שאלות)</title>
+        <title>${uiLanguage() === "en" ? "Math test" : "מבחן חשבון"} (${questionsCount} ${uiLanguage() === "en" ? "questions" : "שאלות"})</title>
       </head>
       <body>
         <div class="sheet">
@@ -957,12 +957,12 @@ function generatePrintableTest() {
             <div>שם: __________</div>
             <div>תאריך: __________</div>
           </div>
-          <h2>מבחן חשבון (${questionsCount} שאלות)</h2>
+          <h2>${uiLanguage() === "en" ? "Math test" : "מבחן חשבון"} (${questionsCount} ${uiLanguage() === "en" ? "questions" : "שאלות"})</h2>
           <ul class="q-list">
             ${listItems}
           </ul>
           <div class="no-print">
-            <button onclick="window.print()">הדפס</button>
+            <button onclick="window.print()">${uiLanguage() === "en" ? "Print" : "הדפס"}</button>
           </div>
         </div>
       </body>
@@ -978,7 +978,7 @@ function showTestModal(score) {
   const modal = document.getElementById('testModal');
   const body = document.getElementById('testModalBody');
   if (!modal || !body) return;
-  body.textContent = `הציון שלך: ${score}/${testTargetQuestions}`;
+  body.textContent = uiText('score', `${score}/${testTargetQuestions}`);
   modal.classList.remove('hidden');
 }
 
@@ -1012,7 +1012,7 @@ function clearTestResults() {
   const countSelect = document.getElementById('testCount');
   const countVal = parseInt(countSelect && countSelect.value ? countSelect.value : '100', 10);
   if (progressEl) progressEl.textContent = `0/${countVal}`;
-  if (correctEl) correctEl.textContent = `נכונות: 0`;
+  if (correctEl) correctEl.textContent = uiText('correctCount', 0);
   if (timerEl) timerEl.textContent = `10:00`;
   if (summary) { summary.classList.add('hidden'); summary.innerHTML = ''; }
   if (startBtn) startBtn.classList.remove('hidden');
