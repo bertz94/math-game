@@ -923,3 +923,101 @@ body[dir="ltr"] .dropdown-digit-button {
       "print";
   }
 }
+
+
+/* Final small-screen alignment and overflow fixes */
+@media (max-width: 640px) {
+  /* Keep both dropdown panels fully inside the viewport in English. */
+  body[dir="ltr"] #dropdown-container .dropdown-content,
+  body[dir="ltr"] .bottom-section > .input-group > .dropdown:first-child .dropdown-content {
+    left: auto;
+    right: 0;
+    width: min(230px, calc(100vw - 40px));
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  body[dir="ltr"] .dropdown-content {
+    direction: ltr;
+    text-align: left;
+  }
+
+  /* Conventional LTR checkbox order: checkbox first, then its label. */
+  body[dir="ltr"] .checkbox-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+  body[dir="ltr"] .checkbox-item input {
+    order: 0;
+    margin: 0;
+  }
+  body[dir="ltr"] .checkbox-item label {
+    order: 1;
+    flex: 1 1 auto;
+    text-align: left;
+    white-space: normal;
+  }
+
+  /* Center the mode selector without forcing its labels off-screen. */
+  .mode-toggle {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    justify-items: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    font-size: clamp(14px, 3.8vw, 18px);
+  }
+  .mode-toggle > span {
+    min-width: 0;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  /* A single-column test panel is more readable on phone widths. */
+  .test-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "start"
+      "count-label"
+      "count"
+      "timer"
+      "progress"
+      "correct"
+      "end"
+      "download"
+      "clear"
+      "print";
+    gap: 10px;
+    width: 100%;
+  }
+  #testControls label[for="testCount"] {
+    width: 100%;
+    text-align: start;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  #testControls > span {
+    display: block;
+    width: 100%;
+    text-align: start;
+  }
+  #testCount,
+  #testControls button {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .container,
+  .innerContainer,
+  .bttoom-section,
+  .bottom-section {
+    max-width: 100%;
+    min-width: 0;
+  }
+}
