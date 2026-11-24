@@ -11,23 +11,15 @@
 
 <body dir="rtl">
   <div class="banner">
-    <h1>משחקי החשבון</h1>
+    <h1 data-i18n="משחקי החשבון">משחקי החשבון</h1>
+    <button id="languageToggle" type="button" onclick="toggleLanguage()">English</button>
   </div>
   <div>
     <div class="description">
-      <p>
-        בחרו את הפעולות שתרצו להגריל מהם ומספר הספרות, לחצו הגרל, רישמו את הפתרון
-        ולחצו על בדיקה.
-        <br>
-        Shift - מגריל תרגיל חדש
-        <br>
-        Enter - בודק את הפתרון
-        <br>
-        במספרים חד ספרתיים, אפשר לקבע את המספר הראשון
-      </p>
+      <p data-i18n="בחרו את הפעולות שתרצו להגריל מהם ומספר הספרות, לחצו הגרל, רישמו את הפתרון ולחצו על בדיקה.\nShift - מגריל תרגיל חדש\nEnter - בודק את הפתרון\nבמספרים חד ספרתיים, אפשר לקבע את המספר הראשון">בחרו את הפעולות שתרצו להגריל מהם ומספר הספרות, לחצו הגרל, רישמו את הפתרון<br>ולחצו על בדיקה.<br>Shift - מגריל תרגיל חדש<br>Enter - בודק את הפתרון<br>במספרים חד ספרתיים, אפשר לקבע את המספר הראשון</p>
       <hr class="divider">
-      <div id="streak">רצף נוכחי: 0</div>
-      <div id="highScore">שיא: 0</div>
+      <div id="streak" data-i18n="רצף נוכחי: 0">רצף נוכחי: 0</div>
+      <div id="highScore" data-i18n="שיא: 0">שיא: 0</div>
     </div>
     <div class="container">
       <div class="innerContainer">
@@ -50,38 +42,38 @@
         <div class="bottom-section">
           <div class="input-group">
             <div class="dropdown">
-              <button onclick="toggleDropdownArithmeticDropdown()" class="dropbtn">פעולות</button>
+              <button onclick="toggleDropdownArithmeticDropdown()" class="dropbtn" data-i18n="פעולות">פעולות</button>
               <div id="arithmeticDropdown" class="dropdown-content">
                 <div class="checkbox-item">
                   <input type="checkbox" id="addCheckbox" class="dropbtnCheckbox" name="addCheckbox" value="חיבור" checked>
-                  <label for="addCheckbox" class="dropbtnCheckbox">חיבור</label>
+                  <label for="addCheckbox" class="dropbtnCheckbox"><span data-i18n="חיבור">חיבור</span></label>
                 </div>
                 <br>
                 <div class="checkbox-item">
                   <input type="checkbox" id="subtractCheckbox" class="dropbtnCheckbox" name="subtractCheckbox" value="חיסור">
-                  <label for="subtractCheckbox" class="dropbtnCheckbox">חיסור</label>
+                  <label for="subtractCheckbox" class="dropbtnCheckbox"><span data-i18n="חיסור">חיסור</span></label>
                 </div>
                 <br>
                 <div class="checkbox-item">
                   <input type="checkbox" id="multiplyCheckbox" class="dropbtnCheckbox" name="multiplyCheckbox" value="כפל">
-                  <label for="multiplyCheckbox" class="dropbtnCheckbox">כפל</label>
+                  <label for="multiplyCheckbox" class="dropbtnCheckbox"><span data-i18n="כפל">כפל</span></label>
                 </div>
                 <br>
                 <div class="checkbox-item">
                   <input type="checkbox" id="divideCheckbox" class="dropbtnCheckbox" name="divideCheckbox" value="חילוק">
-                  <label for="divideCheckbox" class="dropbtnCheckbox">חילוק</label>
+                  <label for="divideCheckbox" class="dropbtnCheckbox"><span data-i18n="חילוק">חילוק</span></label>
                 </div>
                 <br>
                 <div class="checkbox-item">
                   <input type="checkbox" id="powerCheckbox" class="dropbtnCheckbox" name="powerCheckbox" value="חזקה">
-                  <label for="powerCheckbox" class="dropbtnCheckbox">חזקה</label>
+                  <label for="powerCheckbox" class="dropbtnCheckbox"><span data-i18n="חזקה">חזקה</span></label>
                 </div>
               </div>
             </div>
-            <label id="digitsLabel" for="digits">ספרות</label>
+            <label id="digitsLabel" for="digits" data-i18n="ספרות">ספרות</label>
             <input type="number" id="digits" min="1" max="5" value="1">
             <div id="dropdown-container" class="dropdown">
-              <button class="dropdown-digit-button" onclick="toggleDropdownDigitsDropdown()">מספרים</button>
+              <button class="dropdown-digit-button" onclick="toggleDropdownDigitsDropdown()" data-i18n="מספרים">מספרים</button>
               <div id="digitsDropdown" class="dropdown-content">
                 <div class="checkbox-item">
                   <input type="checkbox" id="num1" class="dropbtnCheckbox" value="1">
@@ -127,16 +119,16 @@
             </div>
           </div>
           <div class="subtract-container hidden">
-            <div class="subtract-label">חיסור</div>
+            <div class="subtract-label" data-i18n="חיסור">חיסור</div>
             <div class="toggle-item">
-              <span class="toggle-label">עד 10</span>
+              <span class="toggle-label" data-i18n="עד 10">עד 10</span>
               <label class="switch">
                 <input type="checkbox" id="option1" class="toggle-checkbox">
                 <span class="slider round"></span>
               </label>
             </div>
             <div class="toggle-item">
-              <span class="toggle-label">לאפשר מינוס</span>
+              <span class="toggle-label" data-i18n="לאפשר מינוס">לאפשר מינוס</span>
               <label class="switch">
                 <input type="checkbox" id="option2" class="toggle-checkbox">
                 <span class="slider round"></span>
@@ -146,48 +138,48 @@
         </div>    
         <div>
           <div class="input-group-input">
-            <button id="random" onclick="generateRandom()">הגרל</button>
+            <button id="random" onclick="generateRandom()" data-i18n="הגרל">הגרל</button>
             <input type="text" id="exercise" readonly>
           </div>
         </div>
         <hr class="divider">
         <div class="bttoom-section">
           <div id="resultInput" class="input-group">
-            <label id="resultLabel" for="result">תוצאה</label>
+            <label id="resultLabel" for="result" data-i18n="תוצאה">תוצאה</label>
             <input type="text" id="result" value="">
-            <button id="check" onclick="checkResult()">בדיקה</button>
+            <button id="check" onclick="checkResult()" data-i18n="בדיקה">בדיקה</button>
           </div>
           <div id="resultButtons" class="hidden">
-            <button class="resultButton" onclick="checkAnswer(1)">תשובה 1</button>
-            <button class="resultButton" onclick="checkAnswer(2)">תשובה 2</button>
-            <button class="resultButton" onclick="checkAnswer(3)">תשובה 3</button>
-            <button class="resultButton" onclick="checkAnswer(4)">תשובה 4</button>
+            <button class="resultButton" onclick="checkAnswer(1)" data-i18n="תשובה 1">תשובה 1</button>
+            <button class="resultButton" onclick="checkAnswer(2)" data-i18n="תשובה 2">תשובה 2</button>
+            <button class="resultButton" onclick="checkAnswer(3)" data-i18n="תשובה 3">תשובה 3</button>
+            <button class="resultButton" onclick="checkAnswer(4)" data-i18n="תשובה 4">תשובה 4</button>
           </div>
           <hr class="divider">
           <!-- Add the following code to toggle between the modes -->
           <div class="mode-toggle">
-            <span id="modeLabel">אמריקאי</span>
+            <span id="modeLabel" data-i18n="אמריקאי">אמריקאי</span>
             <label class="switch">
               <input type="checkbox" id="modeToggle" onchange="toggleMode()">
               <span class="slider round"></span>
             </label>
-            <span id="modeLabel">רגיל</span>
+            <span id="modeLabel" data-i18n="רגיל">רגיל</span>
             </div>
             <hr class="divider">
             <div id="testControls" class="test-controls">
-              <button id="startTest" onclick="startTestMode()">מבדק</button>
-              <button id="endTest" class="hidden" onclick="endTestMode()">סיים מבדק</button>
-              <label for="testCount">מספר שאלות</label>
+              <button id="startTest" onclick="startTestMode()" data-i18n="מבדק">מבדק</button>
+              <button id="endTest" class="hidden" onclick="endTestMode()" data-i18n="סיים מבדק">סיים מבדק</button>
+              <label for="testCount" data-i18n="מספר שאלות">מספר שאלות</label>
               <select id="testCount">
                 <option value="100" selected>100</option>
                 <option value="50">50</option>
               </select>
               <span id="testTimer" class="test-timer">10:00</span>
               <span id="testProgress" class="test-progress">0/100</span>
-              <span id="testCorrect" class="test-correct">נכונות: 0</span>
-              <button id="downloadResults" class="hidden" onclick="downloadTestResults()">הורד תוצאות</button>
-              <button id="clearTest" class="hidden" onclick="clearTestResults()">נקה מבדק</button>
-              <button id="printableTest" onclick="generatePrintableTest()">צור מבחן להדפסה</button>
+              <span id="testCorrect" class="test-correct" data-i18n="נכונות: 0">נכונות: 0</span>
+              <button id="downloadResults" class="hidden" onclick="downloadTestResults()" data-i18n="הורד תוצאות">הורד תוצאות</button>
+              <button id="clearTest" class="hidden" onclick="clearTestResults()" data-i18n="נקה מבדק">נקה מבדק</button>
+              <button id="printableTest" onclick="generatePrintableTest()" data-i18n="צור מבחן להדפסה">צור מבחן להדפסה</button>
             </div>
             <div id="testSummary" class="test-summary hidden"></div>          
         </div>  
@@ -200,7 +192,7 @@
     <div id="testModal" class="modal hidden">
       <div class="modal-content">
         <span id="testModalClose" class="modal-close" onclick="hideTestModal()">&times;</span>
-        <div id="testModalBody" class="modal-body">הציון שלך: 0/100</div>
+        <div id="testModalBody" class="modal-body" data-i18n="הציון שלך: 0/100">הציון שלך: 0/100</div>
       </div>
     </div>
   <script src="scripts/app.js"></script>
