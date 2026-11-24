@@ -791,3 +791,24 @@ button {
   #check { width: 100%; }
   .test-controls { grid-template-columns: minmax(0, 1fr); }
 }
+
+.banner { position: relative; }
+body[dir="ltr"] { direction: ltr; }
+body[dir="ltr"] .description,
+body[dir="ltr"] .container { text-align: left; }
+body[dir="ltr"] .toggle-label { text-align: left; margin-left: 0; margin-right: 10px; }
+body[dir="ltr"] .checkbox-item input { margin-right: 8px; margin-left: 0; }
+body[dir="ltr"] .watermark { left: auto; right: 10px; }
+body[dir="ltr"] .dropdown-content { right: auto; left: 0; }
+.description [data-i18n="instructions"] { white-space: pre-line; }
+@media (max-width: 640px) {
+  body[dir="ltr"] .bottom-section > .input-group {
+    grid-template-areas: "digits-label ops" "digits-input digits-input" "numbers numbers";
+  }
+  body[dir="ltr"] #digitsLabel { justify-self: start; }
+  body[dir="ltr"] .bottom-section > .input-group > .dropdown:first-child { justify-self: end; }
+  body[dir="ltr"] #dropdown-container { justify-self: end; }
+  body[dir="ltr"] #random { order: 1; }
+  body[dir="ltr"] #exercise { order: 2; }
+  body[dir="ltr"] #resultInput { grid-template-areas: "label label" "check field"; }
+}
