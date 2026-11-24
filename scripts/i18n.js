@@ -33,25 +33,23 @@ function toggleLanguage() {
   document.documentElement.dir = next === "en" ? "ltr" : "rtl";
   document.body.dir = next === "en" ? "ltr" : "rtl";
   document.querySelectorAll("[data-i18n]").forEach(el => {
+    if (!el.hasAttribute("data-hebrew-html")) el.setAttribute("data-hebrew-html", el.innerHTML);
     const key = el.getAttribute("data-i18n");
-    const translated = UI_TRANSLATIONS[next][key];
-    if (translated !== undefined && typeof translated !== "function") {
-      if (key === "instructions") el.textContent = translated;
-      else el.textContent = translated;
-    }
+    if (next === "he") el.innerHTML = el.getAttribute("data-hebrew-html");
+    else if (UI_TRANSLATIONS.en[key] !== undefined) el.textContent = UI_TRANSLATIONS.en[key];
   });
   const toggle = document.getElementById("languageToggle");
   if (toggle) toggle.textContent = next === "en" ? "עברית" : "English";
   document.title = next === "en" ? "Math Games" : "משחקי החשבון";
   const streak = document.getElementById("streak");
   const high = document.getElementById("highScore");
-  if (streak) streak.textContent = uiText("streak", (streak.textContent.match(/\d+/g)||["0"]).pop());
-  if (high) high.textContent = uiText("highScore", (high.textContent.match(/\d+/g)||["0"]).pop());
+  if (streak) streak.textContent = uiText("streak", (streak.textContent.match(/\\d+/g)||["0"]).pop());
+  if (high) high.textContent = uiText("highScore", (high.textContent.match(/\\d+/g)||["0"]).pop());
   const correct = document.getElementById("testCorrect");
-  if (correct) correct.textContent = uiText("correctCount", (correct.textContent.match(/\d+/g)||["0"]).pop());
+  if (correct) correct.textContent = uiText("correctCount", (correct.textContent.match(/\\d+/g)||["0"]).pop());
   const modal = document.getElementById("testModalBody");
   if (modal && modal.textContent) {
-    const m = modal.textContent.match(/(\d+\/\d+)/);
+    const m = modal.textContent.match(/(\\d+\\/\\d+)/);
     if (m) modal.textContent = uiText("score", m[1]);
   }
   document.querySelectorAll(".test-summary .test-item").forEach(item => {
@@ -63,9 +61,6 @@ function toggleLanguage() {
   });
 }
 document.addEventListener("DOMContentLoaded", () => {
-  const lang = uiLanguage();
-  if (lang === "en") toggleLanguage();
-  // Keep the default Hebrew UI synchronized with the language button.
   const btn = document.getElementById("languageToggle");
   if (btn) btn.textContent = "English";
 });
