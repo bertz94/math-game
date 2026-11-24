@@ -18,7 +18,7 @@ const UI_TRANSLATIONS = {
     score:s=>"Your score: "+s,
     printableTitle:n=>"Math test ("+n+" questions)", name:"Name:", date:"Date:", print:"Print"
   },
-  he: {}
+  he: {\n    chooseOperation:"בחר פעולה",\n    streak:n=>"רצף נוכחי: "+n, highScore:n=>"שיא: "+n,\n    correctCount:n=>"נכונות: "+n, answerSummary:(answer,user)=>answer+" | תשובתך: "+user,\n    score:s=>"הציון שלך: "+s\n  }
 };
 function uiLanguage(){ return document.documentElement.lang === "en" ? "en" : "he"; }
 function uiText(key, ...args) {
