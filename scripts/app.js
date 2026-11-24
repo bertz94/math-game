@@ -949,7 +949,7 @@ function generatePrintableTest() {
       <head>
         <meta charset="utf-8">
         ${style}
-        <title>מבחן חשבון (${questionsCount} שאלות)</title>
+        <title>${uiLanguage() === "en" ? "Math test" : "מבחן חשבון"} (${questionsCount} ${uiLanguage() === "en" ? "questions" : "שאלות"})</title>
       </head>
       <body>
         <div class="sheet">
@@ -957,12 +957,12 @@ function generatePrintableTest() {
             <div>שם: __________</div>
             <div>תאריך: __________</div>
           </div>
-          <h2>מבחן חשבון (${questionsCount} שאלות)</h2>
+          <h2>${uiLanguage() === "en" ? "Math test" : "מבחן חשבון"} (${questionsCount} ${uiLanguage() === "en" ? "questions" : "שאלות"})</h2>
           <ul class="q-list">
             ${listItems}
           </ul>
           <div class="no-print">
-            <button onclick="window.print()">הדפס</button>
+            <button onclick="window.print()">${uiLanguage() === "en" ? "Print" : "הדפס"}</button>
           </div>
         </div>
       </body>
