@@ -812,3 +812,114 @@ body[dir="ltr"] .dropdown-content { right: auto; left: 0; }
   body[dir="ltr"] #exercise { order: 2; }
   body[dir="ltr"] #resultInput { grid-template-areas: "label label" "check field"; }
 }
+
+
+/* English layout refinements */
+body[dir="ltr"] .dropdown-content,
+body[dir="ltr"] .dropdown-menu {
+  direction: ltr;
+  text-align: left;
+}
+
+body[dir="ltr"] .checkbox-item {
+  direction: ltr;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+body[dir="ltr"] .checkbox-item label {
+  order: 0;
+  text-align: left;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+body[dir="ltr"] .checkbox-item input {
+  order: 1;
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+body[dir="ltr"] .dropbtn,
+body[dir="ltr"] .dropdown-digit-button {
+  direction: ltr;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  /* Give every test control a deliberate, aligned grid cell. */
+  .test-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      "start count-label"
+      "count timer"
+      "progress correct"
+      "end end"
+      "download clear"
+      "print print";
+    align-items: center;
+    column-gap: 12px;
+    row-gap: 12px;
+    width: 100%;
+  }
+
+  #startTest { grid-area: start; }
+  #endTest { grid-area: end; }
+  #testControls label[for="testCount"] {
+    grid-area: count-label;
+    text-align: start;
+    align-self: end;
+  }
+  #testCount { grid-area: count; }
+  #testTimer { grid-area: timer; justify-self: start; }
+  #testProgress { grid-area: progress; }
+  #testCorrect { grid-area: correct; }
+  #downloadResults { grid-area: download; }
+  #clearTest { grid-area: clear; }
+  #printableTest { grid-area: print; }
+
+  .test-controls button,
+  .test-controls select {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+  }
+
+  .test-controls > span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .mode-toggle {
+    min-height: 56px;
+    gap: 16px;
+  }
+
+  .bttoom-section > .divider,
+  .bottom-section > .divider {
+    margin: 18px 0;
+  }
+
+  body[dir="ltr"] .test-controls {
+    direction: ltr;
+  }
+}
+
+@media (max-width: 380px) {
+  .test-controls {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "start"
+      "count-label"
+      "count"
+      "timer"
+      "progress"
+      "correct"
+      "end"
+      "download"
+      "clear"
+      "print";
+  }
+}
