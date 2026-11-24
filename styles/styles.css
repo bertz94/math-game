@@ -479,3 +479,253 @@ input:checked + .slider:before {
   color: #2c3e50;
   margin-bottom: 8px; /* space before first toggle */
 }
+
+
+/* Responsive layout and touch targets */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+.description,
+.container {
+  width: min(760px, calc(100% - 32px));
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container,
+.description {
+  min-width: 0;
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+button {
+  font: inherit;
+}
+
+button,
+select,
+input:not([type="checkbox"]):not([type="radio"]) {
+  min-height: 44px;
+}
+
+button {
+  touch-action: manipulation;
+}
+
+@media (max-width: 640px) {
+  .banner {
+    padding: 16px 12px;
+    margin-bottom: 14px;
+  }
+
+  .banner h1 {
+    font-size: clamp(1.35rem, 6vw, 1.8rem);
+  }
+
+  .description,
+  .container {
+    width: calc(100% - 20px);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .description {
+    padding: 14px;
+    margin-bottom: 14px;
+    font-size: 0.95rem;
+  }
+
+  .container {
+    padding: 14px;
+  }
+
+  .bottom-section,
+  .bttoom-section,
+  .innerContainer {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .input-group {
+    display: flex;
+    flex: 1 1 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 12px;
+  }
+
+  .input-group-input {
+    display: flex;
+    flex: 1 1 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    width: 100%;
+  }
+
+  #random,
+  #check {
+    flex: 0 0 auto;
+    margin: 0;
+    min-height: 48px;
+  }
+
+  #exercise {
+    flex: 1 1 120px;
+    width: auto;
+    min-width: 0;
+    margin: 0;
+    min-height: 48px;
+    font-size: 1.2rem;
+  }
+
+  #resultInput {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #resultLabel,
+  #digitsLabel {
+    height: auto;
+    margin: 0;
+  }
+
+  #result,
+  #digits {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+  }
+
+  #check {
+    min-width: 76px;
+  }
+
+  .dropbtn,
+  .dropdown-digit-button {
+    min-height: 44px;
+    margin: 0;
+  }
+
+  .dropdown-content,
+  .dropdown-menu {
+    max-width: calc(100vw - 40px);
+    max-height: 60vh;
+    overflow: auto;
+  }
+
+  .checkbox-item {
+    min-height: 36px;
+  }
+
+  .checkbox-item input,
+  .dropdown-menu input {
+    width: auto;
+    min-width: 20px;
+    min-height: 20px;
+    margin: 0 0 0 8px;
+  }
+
+  .checkbox-item label {
+    min-width: 75px;
+    margin: 0;
+  }
+
+  .subtract-container {
+    width: 100%;
+  }
+
+  .test-controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 10px;
+  }
+
+  .test-controls button,
+  .test-controls select {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+  }
+
+  .test-controls label {
+    margin: 0;
+  }
+
+  #resultButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .resultButton {
+    width: 100%;
+    margin: 0;
+    min-height: 48px;
+  }
+
+  .mode-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .test-summary {
+    max-height: none;
+    overflow: visible;
+    overflow-wrap: anywhere;
+  }
+
+  .watermark {
+    position: static;
+    align-self: flex-start;
+    margin: 16px 12px;
+  }
+
+  .modal-content {
+    width: calc(100% - 32px);
+    padding: 18px;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 12px;
+  }
+
+  #resultInput {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #resultInput label {
+    justify-self: start;
+  }
+
+  #check {
+    width: 100%;
+  }
+
+  .test-controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
